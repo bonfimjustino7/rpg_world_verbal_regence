@@ -7,8 +7,11 @@
 [node name="main" type="Node2D"]
 
 [node name="world" parent="." instance=ExtResource("1_o7gja")]
+position = Vector2(0, -20)
 
 [node name="npc" parent="." instance=ExtResource("2_qy756")]
 
 [node name="player" parent="." instance=ExtResource("1_n6jgv")]
-position = Vector2(189, 108)
+position = Vector2(24, 136)
+
+[connection signal="body_exited" from="npc" to="npc" method="_on_body_exited"]
