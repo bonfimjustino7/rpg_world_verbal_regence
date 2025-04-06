@@ -7,18 +7,18 @@ update vendedora (vendedora) [animation="Slide in Left"]
 vendedora: Eu tentei explicar a situação pra sua prima, mas... eu disse que preferi mais ficar em casa do que ir na praça... e ela ficou me olhando como se eu tivesse falado grego!
 update vendedora (vendedora_gray) [animation="Slide in Left"]
 update character (player) [animation="Slide in Left"]
-character:  Qual é o problema com a frase da vó? "Preferi mais ficar em casa do que ir na praça."
+character: ❓ Qual é o problema com a frase da vó? "Preferi mais ficar em casa do que ir na praça."
 update character (player)
 - “O verbo preferir já indica comparação. Então o ‘mais’ é redundante. O correto seria: ‘Preferi ficar em casa a ir à praça’.”
-	update vendedora(vendedora)
-	update character(player_gray)
+	update vendedora (vendedora)
+	update character (player_gray)
 	vendedora: Ahh… é verdade! Como eu pude esquecer isso? Seu avô vivia corrigindo isso nos bilhetes da feira!
+	[signal arg="level1-sucess"]
 - “A frase está certa. Só precisava mudar o tempo verbal.”
-	update vendedora(vendedora)
-	update character(player_gray)
+	update vendedora (vendedora)
+	update character (player_gray)
 	vendedora: Será? Acho que ainda tem algo errado… o vírus tá atrapalhando até você, meu filho?
 - “O erro foi no ‘do que’. A frase certa é: ‘Preferi mais ficar em casa que ir na praça’.”
-	update vendedora(vendedora)
-	update character(player_gray)
+	update vendedora (vendedora)
+	update character (player_gray)
 	vendedora: Será? Acho que ainda tem algo errado… o vírus tá atrapalhando até você, meu filho?
-
