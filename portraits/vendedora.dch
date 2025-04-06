@@ -10,9 +10,9 @@
 },
 "default_portrait": "vendedora",
 "description": "",
-"display_name": "Vó",
+"display_name": " Vó Helena",
 "mirror": false,
-"nicknames": ["Vó"],
+"nicknames": ["Vó Helena"],
 "offset": Vector2(0, -100),
 "portraits": {
 "vendedora": {

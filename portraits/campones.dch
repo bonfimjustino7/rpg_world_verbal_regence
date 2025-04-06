@@ -10,9 +10,9 @@
 },
 "default_portrait": "campones",
 "description": "",
-"display_name": "Zé",
+"display_name": "Vô Anselmo",
 "mirror": false,
-"nicknames": ["Ze"],
+"nicknames": ["Vô Anselmo"],
 "offset": Vector2(0, -100),
 "portraits": {
 "campones": {

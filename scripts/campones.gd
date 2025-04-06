@@ -15,9 +15,17 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		if Dialogic.current_timeline != null:
 			return
+		
+		Dialogic.timeline_ended.connect(_on_dialog_ended)
+		Dialogic.signal_event.emit("start_timeline")
 		Dialogic.start("level2")
-		get_viewport().set_input_as_handled()
+	
 
 
 func _on_body_exited(body: Node2D) -> void:
 	Dialogic.end_timeline()
+
+
+func _on_dialog_ended():	
+	Dialogic.timeline_ended.disconnect(_on_dialog_ended)
+	Dialogic.signal_event.emit("end_timeline")

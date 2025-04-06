@@ -1,14 +1,47 @@
 extends CharacterBody2D
 
+signal die_hit
 @export var speed = 100
 var current_dir = "none"
+@export var health := 3
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("front_idle")
 	
+	
+func set_speed(sp):
+	speed = sp
+	
+func accelerate_speed(sp):
+	speed += sp
+	
+func decrease_speed(sp):
+	speed -= sp
+	
+
+func take_damage(amount := 1):
+	health -= amount
+	print("🔥 Player levou dano! Vida restante:", health)
+
+	if health <= 0:
+		die()
+
+func die():
+	print("💀 Player morreu!")
+	die_hit.emit()
+	
 
 func _physics_process(delta: float) -> void:
 	play_movement(delta)
+	var collision_count = get_slide_collision_count()
+	for i in range(collision_count):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()		
+
+		if collider.is_in_group("virus"):			
+			take_damage()
+			collider.queue_free()
+	
 	
 func play_movement(delta):
 	if Input.is_action_pressed("ui_right"):
@@ -69,5 +102,3 @@ func play_anim(movement):
 			anim.play("back_walk")
 		elif movement == 0:
 			anim.play("back_idle")
-		
-	

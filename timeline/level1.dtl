@@ -13,7 +13,7 @@ update character (player)
 	update vendedora (vendedora)
 	update character (player_gray)
 	vendedora: Ahh… é verdade! Como eu pude esquecer isso? Seu avô vivia corrigindo isso nos bilhetes da feira!
-	[signal arg="level1-sucess"]
+	[signal arg="level1-success"]
 - “A frase está certa. Só precisava mudar o tempo verbal.”
 	update vendedora (vendedora)
 	update character (player_gray)

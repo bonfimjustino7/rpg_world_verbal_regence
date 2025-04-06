@@ -1,0 +1,108 @@
+[gd_scene load_steps=16 format=3 uid="uid://5smglvjl2cnl"]
+
+[ext_resource type="Script" path="res://scripts/virus.gd" id="1_c7v0j"]
+[ext_resource type="Texture2D" uid="uid://dvuy6t3llgkc7" path="res://art/characters/npc/slime.png" id="1_mhrx4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ippxh"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxwa6"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v47sp"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku562"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi7d6"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reyl6"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83ln5"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yquqg"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wamsm"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(128, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmo7l"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(160, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da6hc"]
+atlas = ExtResource("1_mhrx4")
+region = Rect2(192, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mb4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ippxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxwa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v47sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku562")
+}],
+"loop": true,
+"name": &"front",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi7d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reyl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83ln5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yquqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wamsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmo7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da6hc")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4wq7"]
+radius = 10.198
+
+[node name="virus" type="CharacterBody2D" groups=["virus"]]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_c7v0j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6mb4k")
+animation = &"move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y4wq7")
