@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		show_dialog("level1")
-		get_viewport().set_input_as_handled()
+		
 
 
 func show_dialog(name):
@@ -22,8 +22,14 @@ func show_dialog(name):
 		return
 		
 	Dialogic.start(name)
-	get_viewport().set_input_as_handled()
+	Dialogic.timeline_ended.connect(_on_dialog_ended)
+	Dialogic.signal_event.emit("start_timeline")
+	
 
+func _on_dialog_ended():	
+	Dialogic.timeline_ended.disconnect(_on_dialog_ended)
+	Dialogic.signal_event.emit("end_timeline")
 
 func _on_body_exited(body: Node2D) -> void:
 	Dialogic.end_timeline()
+	Dialogic.signal_event.emit("end_timeline")

@@ -10,9 +10,9 @@
 },
 "default_portrait": "player",
 "description": "Este personagem fica na aldiea",
-"display_name": "Caio",
+"display_name": "Léo",
 "mirror": false,
-"nicknames": [""],
+"nicknames": ["Leo"],
 "offset": Vector2(0, -100),
 "portraits": {
 "player": {

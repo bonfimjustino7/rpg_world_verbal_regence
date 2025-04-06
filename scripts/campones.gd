@@ -24,7 +24,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	Dialogic.end_timeline()
-
+	Dialogic.signal_event.emit("end_timeline")
 
 func _on_dialog_ended():	
 	Dialogic.timeline_ended.disconnect(_on_dialog_ended)

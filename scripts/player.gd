@@ -4,10 +4,11 @@ signal die_hit
 @export var speed = 100
 var current_dir = "none"
 @export var health := 3
+@onready var progressBar = $ProgressBar
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("front_idle")
-	
+	progressBar.max_value = health
 	
 func set_speed(sp):
 	speed = sp
@@ -22,13 +23,14 @@ func decrease_speed(sp):
 func take_damage(amount := 1):
 	health -= amount
 	print("🔥 Player levou dano! Vida restante:", health)
-
+	progressBar.value = health
 	if health <= 0:
 		die()
 
 func die():
 	print("💀 Player morreu!")
 	die_hit.emit()
+	hide()
 	
 
 func _physics_process(delta: float) -> void:
