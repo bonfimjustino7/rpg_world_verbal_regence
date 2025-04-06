@@ -1,0 +1,30 @@
+join character 1 [animation="Slide In Left"]
+character: Vô! É o Léo. Vim ajudar.
+update character(player_gray)
+
+join campones 4 [animation="Slide In Right"]
+campones: Léo… você ainda entende o que eu digo?
+update campones(campones_gray)
+
+update character(player)
+character: Tô tentando, vô. Fala comigo.
+
+update campones(campones)
+update character(player_gray)
+campones: Eu disse ao prefeito que a gente precisa de reagir contra esse vírus, mas ele... ele riu da minha cara. Disse que eu tava confundindo tudo.
+update campones(campones_gray)
+
+update character(player)
+character: "Reagir de contra"? Vô… espera...
+
+character: ❓ Onde está o erro na fala do avô?
+“A gente precisa de reagir contra esse vírus.”
+
+update character(player_gray)
+update campones(campones)
+- “O verbo reagir é direto, então o correto seria: ‘A gente precisa de reagir esse vírus’.”
+	campones: Então eu... tava certo? Não parece certo... Mas talvez o vírus esteja mexendo com você também, Léo…
+- “O verbo preferir já indica comparação. Então o ‘mais’ é redundante. O correto seria: ‘Preferi ficar em casa a ir à praça’.”
+	campones:  A linguagem tá escapando da gente, menino. Se não fosse por você… a gente já teria perdido a fala de vez.
+- “O verbo está certo, o problema é o tempo verbal. O certo seria: ‘Precisávamos ter reagido contra o vírus’.”
+	campones: Então eu... tava certo? Não parece certo... Mas talvez o vírus esteja mexendo com você também, Léo…

@@ -23,7 +23,10 @@ global="*res://scripts/global.gd"
 [dialogic]
 
 directories/dch_directory={
-"character": "res://timeline/character.dch"
+"campones": "res://portraits/campones.dch",
+"character": "res://timeline/character.dch",
+"prima": "res://portraits/prima.dch",
+"vendedora": "res://portraits/vendedora.dch"
 }
 directories/dtl_directory={
 "introduction": "res://timeline/introduction.dtl",

@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://b3opkhml0ymru"]
+
+[ext_resource type="Texture2D" uid="uid://b8qnlq73tsbbs" path="res://art/characters/npc/old_man_spritesheet.png" id="1_e3wwy"]
+[ext_resource type="Script" path="res://scripts/campones.gd" id="1_jyes2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rn73s"]
+radius = 14.0
+height = 70.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7688g"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(0, 192, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62b1n"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(30, 192, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5jua"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(60, 192, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4u7l"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(90, 192, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c214i"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(120, 192, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v75m5"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(150, 192, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceg6i"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(180, 192, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvsfw"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(210, 192, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mad7l"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(0, 240, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8063"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(30, 240, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe2gh"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(60, 240, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsida"]
+atlas = ExtResource("1_e3wwy")
+region = Rect2(90, 240, 30, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_at6rc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7688g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62b1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5jua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4u7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c214i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v75m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceg6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvsfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mad7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8063")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe2gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsida")
+}],
+"loop": true,
+"name": &"campones",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xr0ny"]
+radius = 12.0
+height = 68.0
+
+[node name="campones" type="Area2D"]
+script = ExtResource("1_jyes2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_rn73s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_at6rc")
+animation = &"campones"
+frame_progress = 0.0997121
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CapsuleShape2D_xr0ny")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

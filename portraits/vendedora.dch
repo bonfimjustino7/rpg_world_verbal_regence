@@ -8,25 +8,25 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "player",
-"description": "Este personagem fica na aldiea",
-"display_name": "Caio",
+"default_portrait": "vendedora",
+"description": "",
+"display_name": "Vó",
 "mirror": false,
-"nicknames": [""],
+"nicknames": ["Vó"],
 "offset": Vector2(0, -100),
 "portraits": {
-"player": {
+"vendedora": {
 "export_overrides": {
-"image": "\"res://portraits/character.png\""
+"image": "\"res://portraits/vo.jpg\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
 "scale": 1,
 "scene": ""
 },
-"player_gray": {
+"vendedora_gray": {
 "export_overrides": {
-"image": "\"res://portraits/character_gray.png\""
+"image": "\"res://portraits/vo_gray.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
