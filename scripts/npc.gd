@@ -21,9 +21,9 @@ func show_dialog(name):
 	if Dialogic.current_timeline != null:
 		return
 		
-	Dialogic.start(name)
 	Dialogic.timeline_ended.connect(_on_dialog_ended)
 	Dialogic.signal_event.emit("start_timeline")
+	Dialogic.start(name)
 	
 
 func _on_dialog_ended():	

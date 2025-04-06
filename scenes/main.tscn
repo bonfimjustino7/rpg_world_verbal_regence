@@ -28,4 +28,5 @@ wait_time = 5.0
 autostart = true
 
 [connection signal="body_exited" from="vendedora" to="vendedora" method="_on_body_exited"]
+[connection signal="die_hit" from="player" to="." method="game_over"]
 [connection signal="timeout" from="PopulateVirusTimer" to="." method="_on_populate_virus_timer_timeout"]

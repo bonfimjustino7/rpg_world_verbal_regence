@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 var SPEED = 10.0
-const JUMP_VELOCITY = -400.0
 var player_ref: CharacterBody2D
 var paused
+
 
 func set_speed(sp):
 	SPEED = sp
@@ -43,7 +43,3 @@ func resume():
 	print("Continue virus")
 	paused = false
 	$AnimatedSprite2D.play("front")
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()

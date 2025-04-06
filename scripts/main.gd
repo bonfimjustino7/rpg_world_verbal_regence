@@ -1,10 +1,14 @@
 extends Node2D
 
-var speed_virus = 10
-var speed_player = 60
+const SPEED_VIRUS = 10
+const SPEED_PLAYER = 50
+
+var speed_virus = SPEED_VIRUS
+var speed_player = SPEED_PLAYER
 @export var virus_scene: PackedScene
 @onready var player = $player
 @export var number_of_viruses: int = 5
+var pause_virus = false
 
 
 func _ready() -> void:
@@ -15,18 +19,21 @@ func _ready() -> void:
 func _on_dialogic_text_signal(argument:String):
 	if argument == "level1-success":
 		print("Parabéns você conseguir vencer o nível 1")
+		response_success()
 	elif argument == "level2-success":
 		print("Parabéns você conseguir vencer o nível 2")
+		response_success()
 	elif argument == "start_timeline":
 		print("Iniciou o timeline")
 		get_tree().call_group("viruses", "pause")
-	
+		pause_virus = true
 	elif argument == "end_timeline":
 		print("Saiu do timeline")
 		get_tree().call_group("viruses", "resume")
-	
+		pause_virus = false
 	else:
-		print(argument)
+		print(argument)		
+		response_fail()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -35,7 +42,16 @@ func _process(delta: float) -> void:
 
 func new_game():
 	$player.set_speed(speed_player)	
-	#populate_virus()
+	speed_virus = SPEED_VIRUS
+	speed_player = SPEED_PLAYER
+	$player.show()
+	$PopulateVirusTimer.start()
+	
+	
+func game_over():
+	print("Game ouver")
+	$PopulateVirusTimer.stop()
+	get_tree().call_group("viruses", "queue_free")
 	
 
 func populate_virus():
@@ -44,6 +60,7 @@ func populate_virus():
 	for i in range(number_of_viruses):
 		var virus = virus_scene.instantiate()
 		virus.add_to_group("viruses")
+
 	
 		# Definir posição inicial na borda direita da tela
 		var spawn_x = viewport_rect.position.x  # Posição no final da tela (esquerda)
@@ -59,5 +76,32 @@ func populate_virus():
 
 
 func _on_populate_virus_timer_timeout() -> void:
-	print("Populando virus {number_of_viruses}", number_of_viruses)
-	populate_virus()
+	if not pause_virus:
+		print("Populando virus: ", number_of_viruses)
+		populate_virus()
+		
+func response_success():
+	speed_virus -= 5
+	speed_player += 5
+	
+	if speed_virus < SPEED_VIRUS:
+		speed_virus = SPEED_VIRUS
+	
+	if speed_player < SPEED_PLAYER:
+		speed_player = SPEED_PLAYER
+		
+	get_tree().call_group("viruses", "decrease_speed", speed_virus)
+	player.accelerate_speed(speed_player)
+
+func response_fail():
+	speed_virus += 5
+	speed_player -= 5
+	
+	if speed_virus < SPEED_VIRUS:
+		speed_virus = SPEED_VIRUS
+	
+	if speed_player < SPEED_PLAYER:
+		speed_player = SPEED_PLAYER
+	
+	player.decrease_speed(speed_player)
+	get_tree().call_group("viruses", "accelerate_speed", speed_virus)

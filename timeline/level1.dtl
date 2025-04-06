@@ -18,7 +18,9 @@ update character (player)
 	update vendedora (vendedora)
 	update character (player_gray)
 	vendedora: Será? Acho que ainda tem algo errado… o vírus tá atrapalhando até você, meu filho?
+	[signal arg="level1-failed"]
 - “O erro foi no ‘do que’. A frase certa é: ‘Preferi mais ficar em casa que ir na praça’.”
 	update vendedora (vendedora)
 	update character (player_gray)
 	vendedora: Será? Acho que ainda tem algo errado… o vírus tá atrapalhando até você, meu filho?
+	[signal arg="level1-failed"]
