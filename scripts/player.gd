@@ -3,12 +3,12 @@ extends CharacterBody2D
 signal die_hit
 @export var speed = 100
 var current_dir = "none"
-@export var health := 3
+const HEALTH = 3
+@export var health := HEALTH
 @onready var progressBar = $ProgressBar
 
 func _ready() -> void:
-	$AnimatedSprite2D.play("front_idle")
-	progressBar.max_value = health
+	revive()
 	
 func set_speed(sp):
 	speed = sp
@@ -19,6 +19,13 @@ func accelerate_speed(sp):
 func decrease_speed(sp):
 	speed -= sp
 	
+
+func revive():
+	show()
+	health = HEALTH
+	$AnimatedSprite2D.play("front_idle")
+	progressBar.max_value = health
+	progressBar.value = health
 
 func take_damage(amount := 1):
 	health -= amount

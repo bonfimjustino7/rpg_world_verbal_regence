@@ -27,7 +27,7 @@ update campones(campones)
 	[signal arg="level2-failed"]
 - “O verbo preferir já indica comparação. Então o ‘mais’ é redundante. O correto seria: ‘Preferi ficar em casa a ir à praça’.”
 	campones: A linguagem tá escapando da gente, menino. Se não fosse por você… a gente já teria perdido a fala de vez.
-	campones: Muito obrigado meu filho! Vá ajudar sua vó e os outros moradores da vila. Precisamos de você!
+	campones: Muito obrigado meu filho! Siga o camimho de pedras e vá ajudar sua vó e os outros moradores da vila. Precisamos de você!
 	[signal arg="level2-success"]
 - “O verbo está certo, o problema é o tempo verbal. O certo seria: ‘Precisávamos ter reagido contra o vírus’.”
 	campones: Então eu... tava certo? Não parece certo... Mas talvez o vírus esteja mexendo com você também, Léo…

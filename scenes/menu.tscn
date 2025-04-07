@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://befpxi1n2gqxi"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_dbk8n"]
+[ext_resource type="Texture2D" uid="uid://0dhfc0hvr4rb" path="res://art/tilesets/backgrounds/aldeia.jpg" id="2_36n53"]
+
+[sub_resource type="SystemFont" id="SystemFont_0r852"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqowr"]
+bg_color = Color(0.211087, 0.141514, 0.0874451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmo5f"]
+bg_color = Color(0.65098, 0.482353, 0.352941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsdk8"]
+bg_color = Color(0.211087, 0.141514, 0.0874451, 1)
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_dbk8n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_36n53")
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.651
+anchor_right = 0.5
+anchor_bottom = 0.651
+offset_left = -99.0
+offset_top = 121.152
+offset_right = 106.0
+offset_bottom = 192.152
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_0r852")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/hover = SubResource("StyleBoxFlat_mqowr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vmo5f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hsdk8")
+text = "Iniciar Jogo"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

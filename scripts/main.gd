@@ -12,10 +12,18 @@ var pause_virus = false
 
 
 func _ready() -> void:
-	Dialogic.signal_event.connect(_on_dialogic_text_signal)
+	Dialogic.signal_event.connect(_on_dialogic_text_signal)	
+	instrutions_player()
+
+func instrutions_player():		
+	Dialogic.timeline_ended.connect(_on_instrutions_ended)
+	Dialogic.start("instrutions")
+	
+	
+func _on_instrutions_ended():
+	Dialogic.timeline_ended.disconnect(_on_instrutions_ended)
 	new_game()
 	
-
 func _on_dialogic_text_signal(argument:String):
 	if argument == "level1-success":
 		print("Parabéns você conseguir vencer o nível 1")
@@ -35,16 +43,12 @@ func _on_dialogic_text_signal(argument:String):
 		print(argument)		
 		response_fail()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func new_game():
 	$player.set_speed(speed_player)	
 	speed_virus = SPEED_VIRUS
 	speed_player = SPEED_PLAYER
-	$player.show()
+	player.revive()
 	$PopulateVirusTimer.start()
 	
 	
@@ -52,7 +56,11 @@ func game_over():
 	print("Game ouver")
 	$PopulateVirusTimer.stop()
 	get_tree().call_group("viruses", "queue_free")
+	$GameOverTimer.start()
 	
+	
+func _on_game_over_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func populate_virus():
 	var viewport_rect = get_viewport().get_visible_rect()  # Obtém o tamanho da tela	
@@ -103,5 +111,5 @@ func response_fail():
 	if speed_player < SPEED_PLAYER:
 		speed_player = SPEED_PLAYER
 	
-	player.decrease_speed(speed_player)
+	player.set_speed(speed_player)
 	get_tree().call_group("viruses", "accelerate_speed", speed_virus)
