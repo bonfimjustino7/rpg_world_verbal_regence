@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
 signal die_hit
+signal mission_completed
+
 @export var speed = 100
 var current_dir = "none"
 const HEALTH = 3
+const MAX_MISSIONS = 2
+var missions = 0
 @export var health := HEALTH
 @onready var progressBar = $ProgressBar
+@onready var missionCompleted = $MissionCompleted
 
 func _ready() -> void:
 	revive()
@@ -20,14 +25,30 @@ func decrease_speed(sp):
 	speed -= sp
 	
 
+func complete_mission(amount = 1):
+	missions += 1
+	if missions > MAX_MISSIONS:
+		missions = MAX_MISSIONS
+	
+	elif missions == MAX_MISSIONS:
+		$VictorySound.play()
+		mission_completed.emit()
+	
+	missionCompleted.value = missions
+
 func revive():
 	show()
 	health = HEALTH
+	missions = 0
 	$AnimatedSprite2D.play("front_idle")
 	progressBar.max_value = health
 	progressBar.value = health
+	missionCompleted.max_value = MAX_MISSIONS
+	missionCompleted.value = missions
+	
 
 func take_damage(amount := 1):
+	$HitSound.play()
 	health -= amount
 	print("🔥 Player levou dano! Vida restante:", health)
 	progressBar.value = health
@@ -36,8 +57,10 @@ func take_damage(amount := 1):
 
 func die():
 	print("💀 Player morreu!")
+	$GameOverSound.play()
 	die_hit.emit()
 	hide()
+	
 	
 
 func _physics_process(delta: float) -> void:

@@ -100,6 +100,10 @@ func response_success():
 		
 	get_tree().call_group("viruses", "decrease_speed", speed_virus)
 	player.accelerate_speed(speed_player)
+	player.complete_mission()
+	$Quiz_Success.play()
+	
+	
 
 func response_fail():
 	speed_virus += 5
@@ -113,3 +117,8 @@ func response_fail():
 	
 	player.set_speed(speed_player)
 	get_tree().call_group("viruses", "accelerate_speed", speed_virus)
+	$Quiz_Fail.play()
+
+
+func _on_player_mission_completed() -> void:
+	game_over()

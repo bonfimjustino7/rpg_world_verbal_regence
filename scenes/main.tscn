@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bsn66gycy5r4w"]
+[gd_scene load_steps=29 format=4 uid="uid://bsn66gycy5r4w"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_78s8u"]
 [ext_resource type="PackedScene" uid="uid://b38m6g28a3dq7" path="res://scenes/player.tscn" id="1_n6jgv"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dmiv20i4i00p5" path="res://art/objects/vilage/houses.png" id="6_bsdu7"]
 [ext_resource type="PackedScene" uid="uid://5smglvjl2cnl" path="res://scenes/virus.tscn" id="6_cbyjk"]
 [ext_resource type="Texture2D" uid="uid://de4wilq02lxfp" path="res://art/tilesets/village/cobblestone_tiles_grey.png" id="7_31wd2"]
+[ext_resource type="AudioStream" uid="uid://btut1df8qgjbn" path="res://art/sounds/quiz_ok.mp3" id="12_w1fu1"]
+[ext_resource type="AudioStream" uid="uid://c7xqfk1beeyoy" path="res://art/sounds/quiz_fail.mp3" id="13_agtia"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dx7ap"]
 texture = ExtResource("3_d5gv2")
@@ -4970,9 +4972,17 @@ scale = Vector2(0.5, 0.5)
 wait_time = 5.0
 
 [node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
+
+[node name="Quiz_Success" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_w1fu1")
+
+[node name="Quiz_Fail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_agtia")
 
 [connection signal="body_exited" from="vendedora" to="vendedora" method="_on_body_exited"]
 [connection signal="die_hit" from="player" to="." method="game_over"]
+[connection signal="mission_completed" from="player" to="." method="_on_player_mission_completed"]
 [connection signal="timeout" from="PopulateVirusTimer" to="." method="_on_populate_virus_timer_timeout"]
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]

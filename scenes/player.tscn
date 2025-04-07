@@ -1,7 +1,10 @@
-[gd_scene load_steps=58 format=3 uid="uid://b38m6g28a3dq7"]
+[gd_scene load_steps=61 format=3 uid="uid://b38m6g28a3dq7"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cxv18"]
 [ext_resource type="Texture2D" uid="uid://cll5yonjnm0w0" path="res://art/characters/player.png" id="1_yk31w"]
+[ext_resource type="AudioStream" uid="uid://bl4kve3ygnl1y" path="res://art/sounds/hit_sound.wav" id="3_al6sj"]
+[ext_resource type="AudioStream" uid="uid://cv3bmjwvtpbp6" path="res://art/sounds/gameover.wav" id="4_bql2r"]
+[ext_resource type="AudioStream" uid="uid://iuisu1p6icch" path="res://art/sounds/victorios.mp3" id="5_x0jjb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ghdel"]
 height = 20.0
@@ -417,7 +420,7 @@ animations = [{
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4eem4"]
-bg_color = Color(0.993872, 0, 0.208734, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhtyd"]
 bg_color = Color(0, 1, 0, 1)
@@ -445,6 +448,17 @@ limit_top = 0
 limit_bottom = 573
 editor_draw_limits = true
 
+[node name="MissionCompleted" type="ProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -14.0
+offset_right = 11.0
+offset_bottom = -11.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4eem4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mhtyd")
+max_value = 2.0
+value = 1.0
+show_percentage = false
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -11.0
 offset_top = -10.0
@@ -455,3 +469,13 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_mhtyd")
 max_value = 3.0
 value = 3.0
 show_percentage = false
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_al6sj")
+autoplay = true
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bql2r")
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x0jjb")
